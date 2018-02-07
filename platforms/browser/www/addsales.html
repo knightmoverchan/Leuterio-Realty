@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Sales</title>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link href="materialize/css/icons.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/addsales.css" rel="stylesheet">
+    <script src="http://filipinohomes.com/js/accounting.min.js"></script>
+</head>
+<body>
+<!--     <div id="pageloader">
+        <div class="preloader-wrapper big active loader">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+  
+  <!-- <div id="page"> -->
+    <header class="header" id="myHeader">Add Sales</header>
+    <form name="ajaxform" id="submitSales">
+    <span id="errorAlert"></span>
+    <div class="forms">
+        <p class="center-align"></p>
+ 
+        <div class="input-field">
+            <label for="clientfamilyname">Complete Client Name  :</label>
+            <input class="input-field"  name="cfn" id="cfn" type="text" required autofocus /> <small>(Submit a complete client name otherwise processing of commission will be hold due to inaccuracy of data.)</small><!--onblur="validateClientName(this);" />-->
+        </div>
+        <div class="input-field">
+            <label for="unitnum">Unit No. / Block and Lot No.:</label>
+            <input class="input-field"  name="unitnum" id="unitnum" type="text"  />
+        </div>
+
+        <div class="input-field">
+            <select class="input-field col s12" id="salessource" required>
+              <option value="" disabled selected>Select Sales Source</option>
+              <option value="1">Developers</option>
+              <option value="2">Brokerages</option>
+            </select>
+            <label>Sale Source:</label>
+        </div>
+
+        <div class="input-field" style="display:none;" id="sour" >
+            <select class="input-field col s12" id="devid"  name="devid" required>
+            </select>
+        </div>
+
+         <div class="input-field" style="display:none;" id="trns" >
+            <select class="input-field col s12" id="projid"  name="projid" required>
+            </select>
+            <label for="trnslist" id="trnslistlabel"></label>
+        </div>
+
+        <div class="input-field">
+            <SELECT class="input-field col s12" name="propType" id="propType" required>
+                <Option value="" disabled selected>Select Property Type</Option>
+                <Option value="5" >Agricultural</Option>
+                <Option value="8" >Apartment</Option>
+                <Option value="9" >Beach House</Option>
+                <Option value="6" >Beach Properties</Option>
+                <Option value="3" >Commercial</Option>
+                <Option value="1" >Condominiums</Option>
+                <Option value="15" >Farm Land</Option>
+                <Option value="10" >House & Lot</Option>
+                <Option value="4" >Industrial</Option>
+                <Option value="13" >Islands</Option>
+                <Option value="14" >Lot Only</Option>
+                <Option value="11" >Townhouse</Option>    
+            </SELECT>
+            <label for="propType">Property Type:</label>
+        </div>
+        <div class="input-field">
+            <SELECT class="input-field col s12" name="unitnumber" id="unitnumber">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </SELECT>
+            <label for="unitnumber">Number of Units:</label>
+        </div>
+        <div class="input-field">
+            <label for="contractprice" id="cplabel">Total Contract Price :</label>
+            <input class="input-field" name="tcprice" id="tcprice" type="text" onblur="this.value = accounting.formatMoney(this.value);" maxlength=17 placeholder="0.00" required  />
+        </div>
+        <div class="input-field">
+            <!-- <input class="date-picker"  type="date" required autofocus placeholder="mm/dd/yyyy" /> -->
+            <input id="reservationdate" name="reservationdate" type="date" class="datepicker" required>
+            <label for="reservationdate">Reservation Date:</label>
+            <!--="partial_claimed(this.value)"-->
+        </div>
+
+        <div class="input-field">
+            <SELECT class="input-field col s12" class="input-field" name="termofpayment" id="termofpayment" required   >
+                <option value="" disabled selected>Select Term of Payment</option>
+                <option value="Cash">Cash</option>
+                <option value="1 Month">1 Month</option>
+                <option value="2 Months">2 Months</option>
+                <option value="3 Months">3 Months</option>
+                <option value="4 Months">4 Months</option>
+                <option value="5 Months">5 Months</option>
+                <option value="6 Months">6 Months</option>
+                <option value="7 Months">7 Months</option>
+                <option value="8 Months">8 Months</option>
+                <option value="9 Months">9 Months</option>
+                <option value="10 Months">10 Months</option>
+                <option value="11 Months">11 Months</option>
+                <option value="12 Months">12 Months</option>
+                <option value="13 Months">13 Months</option>
+                <option value="14 Months">14 Months</option>
+                <option value="15 Months">15 Months</option>
+                <option value="16 Months">16 Months</option>
+                <option value="17 Months">17 Months</option>
+                <option value="18 Months">18 Months</option>
+                <option value="19 Months">19 Months</option>
+                <option value="20 Months">20 Months</option>
+                <option value="21 Months">21 Months</option>
+                <option value="22 Months">22 Months</option>
+                <option value="23 Months">23 Months</option>
+                <option value="24 Months">24 Months</option>
+                <option value="30 Months">30 Months</option>
+                <option value="36 Months">36 Months</option>
+                <option value="48 Months">48 Months</option>
+                <option value="Others">Others</option>
+            </SELECT>
+                <label for="termofpayment">Term of Payment <small>(Give explanation in the notes if 'Others' term is selected)</small>:</label>
+
+        </div>
+
+        <div class="input-field">
+            <label for="remarks">Remarks/Notes:</label>
+            <textarea name="remarks" rows=3  class="materialize-textarea"></textarea>
+        </div>
+
+        <div class="input-field">
+            <SELECT class="input-field col s12" class="input-field" name="status" id="status" required   >
+                <option value="Unclaimed">Unclaimed</option>
+                <option value="Partially Claimed">Partially Claimed</option>
+                <option value="Fully Claimed">Fully Claimed</option>
+            </SELECT>
+                <label for="status">Status <small>(Give Status if Commission Claimed or Unclaimed)</small>: </label>
+        </div>
+
+        <div class="input-field" style="display:none;" id="partialclaimed_show">
+            <input class="input-field" name="partialclaimed" id="partialclaimed2" value="0" type="text" onblur="this.value = accounting.formatMoney(this.value);"/>
+            <label for="reservedate">Partial Amount:</label>
+        </div>
+       <div class="file-field input-field">
+            <div class="btn">
+                <span>Upload POT</span>
+                <input type="file" name="proofoftrans" type="file" required autofocus>
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <div>
+            <label for="proofoftrans">Proof of transaction <small>(such as a photo capture of transaction document):<br/> Valid POT: readable & duly signed copy of Reservation Agreement, Acknowledgement Receipt Only, Brokerage or rental remittance slip. <span style="color:red">IMPORTANT NOTE: False entry of POT may cause a marketing partner's suspension and automatic deletion of sale.</span></small></label>
+        </div>
+        
+        <div class="input-field"> 
+             <input type="hidden" id="s_name" name="s_name">
+             <input type="hidden" id="s_email" name="s_email">
+             <input type="hidden" id="s_memberid" name="s_memberid">
+             <center><button type="submit" id="submitsales" name="submitsales" class="btn blue" ondblclick="return false;" >Submit<i class="material-icons right">send</i></button></center>
+        </div><br>
+    </div>
+
+    <script src="materialize/js/jquery-3.2.1.min.js"></script>
+    <script src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/addsales.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    <div id="includedContent"></div><br><br><br>
+  <!-- </div> -->
+
+</body>
+</html>

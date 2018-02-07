@@ -1,0 +1,15 @@
+.forms{
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.card .card-content {
+    padding: 2px;
+    border-radius: 0 0 2px 2px;
+}

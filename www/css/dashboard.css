@@ -1,0 +1,18 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+footer{
+	border-top:gray 2px;
+	margin-bottom: 0;
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	background-color: white;
+}
+
+.toppersView, .teamtoppersView, .toppersView2, .teamtoppersView2{
+	padding-top: 10px;
+	padding-left: 20%;
+}

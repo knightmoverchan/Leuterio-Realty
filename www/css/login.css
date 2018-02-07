@@ -1,0 +1,35 @@
+#imglogo {
+    width:  70%;
+    margin: 16%;
+}
+#forms{
+  margin: 15%;
+  padding-top: 5%;
+
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
+}
+
+.container{
+  padding-top:50px;
+  margin: auto;
+}
+
+.btn{
+  width: 100%;
+}
+#errorText{
+    font-size: 100%;
+    color:white;
+    padding: 2%;
+    margin-bottom: 30%;
+}
