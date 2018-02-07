@@ -6,15 +6,16 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>leuteriorealty</name>
+    <name>Leuterio Realty</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+       First Phonegap App
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="knightmoverchan@gmail.com" href="http://phonegap.com">
+        iamknightmover
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <icon platform="android" src="www/img/logo.png" />
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <allow-intent href="tel:*" />
